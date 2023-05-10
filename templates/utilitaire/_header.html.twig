@@ -1,0 +1,47 @@
+<div class="flex flex-wrap place-items-start">
+	<div class="relative mx-auto">
+		<!-- C'était une section, à voir si ça change qqchose -->
+
+		<!-- Navbar -->
+			<nav class="flex justify-between bg-rose-100 text-rose-700 text-xl w-screen"> <div class="px-5 xl:px-12 py-6 flex w-full items-center">
+				<a
+					class="text-3xl font-bold font-heading" href="#">
+					<!-- <img class="h-9" src="logo.png" alt="logo"> -->
+					<img src="https://uploads.turbologo.com/uploads/design/hq_preview_image/2974246/draw_svg20210805-28561-1h6ascn.svg.png" alt="FauxLogo" class="h-36 w-auto">
+				</a>
+				<!-- Nav Links -->
+				<ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
+					<li>
+						<a class="hover:text-rose-500" href="{{ path("app_index") }}">Accueil</a>
+					</li>
+					<li>
+						<a class="hover:text-rose-500" href="{{ path("app_rubrique") }}">Occasions</a>
+					</li>
+					<li>
+						<a class="hover:text-rose-500" href="{{ path("app_produit") }}">Bouquets</a>
+					</li>
+					<li>
+						<a class="hover:text-rose-500" href="#">Contact</a>
+					</li>
+				</ul>
+				<!-- Header Icons -->
+				<div class="hidden xl:flex items-center space-x-5 items-center">
+					<a class="flex items-center text-3xl hover:text-rose-500" href="Panier.html">
+						<i class='bx bx-cart'></i>
+					</a>
+					<!-- Se connecter/S'inscrire -->
+					<a class="flex items-center text-3xl hover:text-rose-500" href="Connexion.html">
+						<i class='bx bx-user-circle'></i>
+					</a>
+				</div>
+			</div>
+			<!-- Responsive navbar -->
+			<a class="xl:hidden flex mr-6 items-center text-2xl" href="Panier.html">
+				<i class='bx bx-cart'></i>
+			</a>
+			<a class="navbar-burger self-center mr-12 xl:hidden text-2xl" href="#">
+				<i class='bx bx-menu'></i>
+			</a>
+		</nav>
+	</div>
+</div>

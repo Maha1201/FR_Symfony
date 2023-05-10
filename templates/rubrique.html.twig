@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Fil Rouge - Rubrique
+{% endblock %}
+
+{% block body %}
+	<section>
+		<div class="flex justify-center font-mono text-3xl text-rose-500 pt-20">
+			Occasions
+		</div>
+	</section>
+
+	<!-- Cards de sous catégories -->
+	<section class="flex flex-wrap justify-evenly m-20 text-rose-400">
+		{% for rubrique in rubriques %}
+			<div>
+				<a href="Produits_Anniv.html">
+					<div class="max-w-sm bg-rose-50 border border-rose-200 rounded-lg shadow p-44 m-16">
+						<div class="text-3xl flex justify-center">{{ rubrique.nom }}</div>
+					</div>
+				</a>
+			</div>
+		{% endfor %}
+	</section>
+
+{% endblock %}
