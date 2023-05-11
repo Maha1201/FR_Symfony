@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page Produit
+{% endblock %}
+
+{% block body %}
+
+	<section>
+		{# <div class="text-3xl ml-36 bg-rose-200">
+					<h1>Produit</h1>
+				</div> #}
+		<!-- Contenu -->
+			<div class="grid grid-cols-2 mt-20"> <!-- Permet de couper la page en 2 colonnes -->
+			<!-- Image -->
+				<div class="flex justify-center"> <img src="{{ produit.photo }}" alt="{{ produit.nom }}" class="h-3/4">
+			</div>
+
+			<!-- Partie droite -->
+			<div class="max-w-xl">
+				<div class="text-4xl mb-8">
+					<h1>{{ produit.nom }}</h1>
+				</div>
+				<hr class="border-rose-200 sm:mx-auto">
+				<div class="text-2xl mt-8">Description :</div>
+				<div class="my-10 text-rose-500">{{ produit.description }}</div>
+				<div class="text-2xl text-rose-500">
+					{{ produit.prix }}
+					<a href="#" class="text-xl bg-rose-700 shadow rounded-lg p-2 ml-4 text-white hover:bg-rose-800 focus:ring-2 focus:ring-rose-900">
+						Ajouter au panier
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="flex flex-row justify-center mb-10">
+		<a href="{{ path('app_produit') }}" class="text-xl bg-rose-700 shadow rounded-lg p-2 ml-4 text-white hover:bg-rose-800 focus:ring-2 focus:ring-rose-900">Back to list</a>
+
+		<a href="{{ path('app_produit_edit', {'id': produit.id}) }}" class="text-xl bg-rose-700 shadow rounded-lg p-2 ml-4 text-white hover:bg-rose-800 focus:ring-2 focus:ring-rose-900">Edit</a>
+
+		{{ include('produit/_delete_form.html.twig') }}
+	</div>
+{% endblock %}

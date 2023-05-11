@@ -1,5 +1,7 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
+    # Changer le thème des formulaires
+    form_themes: ['tailwind_2_layout.html.twig']
 
 when@test:
     twig:

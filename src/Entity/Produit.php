@@ -29,15 +29,15 @@ class Produit
     #[ORM\Column(length: 255)]
     private ?string $photo = null;
 
-    public function __construct($n, $d, $p, $i, $q)
-    {
-
-        $this->nom = $n;
-        $this->description = $d;
-        $this->prix = $p;
-        $this->photo = $i;
-        $this->quantite_totale = $q;
-    }
+    //public function __construct($n, $d, $p, $i, $q)
+    //{
+    //
+    //    $this->nom = $n;
+    //    $this->description = $d;
+    //    $this->prix = $p;
+    //    $this->photo = $i;
+    //    $this->quantite_totale = $q;
+    //}
 
     public function getId(): ?int
     {
