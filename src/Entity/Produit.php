@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProduitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -29,15 +31,25 @@ class Produit
     #[ORM\Column(length: 255)]
     private ?string $photo = null;
 
-    //public function __construct($n, $d, $p, $i, $q)
+    #[ORM\ManyToMany(targetEntity: Rubrique::class, inversedBy: 'produit')]
+    private Collection $rubriques;
+
+    //public function __construct()
     //{
-    //
-    //    $this->nom = $n;
-    //    $this->description = $d;
-    //    $this->prix = $p;
-    //    $this->photo = $i;
-    //    $this->quantite_totale = $q;
+    //    $this->rubriques = new ArrayCollection();
     //}
+
+    public function __construct($n, $d, $p, $i, $q)
+    {
+
+        $this->nom = $n;
+        $this->description = $d;
+        $this->prix = $p;
+        $this->photo = $i;
+        $this->quantite_totale = $q;
+
+        $this->rubriques = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -100,6 +112,33 @@ class Produit
     public function setPhoto(string $photo): self
     {
         $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Rubrique>
+     */
+    public function getRubriques(): Collection
+    {
+        return $this->rubriques;
+    }
+
+    public function addRubrique(Rubrique $rubrique): self
+    {
+        if (!$this->rubriques->contains($rubrique)) {
+            $this->rubriques->add($rubrique);
+            $rubrique->addProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRubrique(Rubrique $rubrique): self
+    {
+        if ($this->rubriques->removeElement($rubrique)) {
+            $rubrique->removeProduit($this);
+        }
 
         return $this;
     }

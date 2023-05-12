@@ -34,9 +34,9 @@
 	</section>
 
 	<div class="flex flex-row justify-center mb-10">
-		<a href="{{ path('app_produit') }}" class="text-xl bg-rose-700 shadow rounded-lg p-2 ml-4 text-white hover:bg-rose-800 focus:ring-2 focus:ring-rose-900">Back to list</a>
+		<a href="{{ path('app_produit') }}" class="text-xl bg-rose-700 shadow rounded-lg p-2 ml-4 text-white hover:bg-rose-800 focus:ring-2 focus:ring-rose-900">Retour</a>
 
-		<a href="{{ path('app_produit_edit', {'id': produit.id}) }}" class="text-xl bg-rose-700 shadow rounded-lg p-2 ml-4 text-white hover:bg-rose-800 focus:ring-2 focus:ring-rose-900">Edit</a>
+		<a href="{{ path('app_produit_edit', {'id': produit.id}) }}" class="text-xl bg-rose-700 shadow rounded-lg p-2 ml-4 text-white hover:bg-rose-800 focus:ring-2 focus:ring-rose-900">Modifier</a>
 
 		{{ include('produit/_delete_form.html.twig') }}
 	</div>

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RubriqueRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: RubriqueRepository::class)]
@@ -16,10 +18,14 @@ class Rubrique
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
+    #[ORM\ManyToMany(targetEntity: Produit::class, mappedBy: 'rubriques')]
+    private Collection $produit;
+
     public function __construct($n)
     {
 
         $this->nom = $n;
+        $this->produit = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -35,6 +41,30 @@ class Rubrique
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Produit>
+     */
+    public function getProduit(): Collection
+    {
+        return $this->produit;
+    }
+
+    public function addProduit(Produit $produit): self
+    {
+        if (!$this->produit->contains($produit)) {
+            $this->produit->add($produit);
+        }
+
+        return $this;
+    }
+
+    public function removeProduit(Produit $produit): self
+    {
+        $this->produit->removeElement($produit);
 
         return $this;
     }
