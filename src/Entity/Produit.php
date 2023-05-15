@@ -34,20 +34,8 @@ class Produit
     #[ORM\ManyToMany(targetEntity: Rubrique::class, inversedBy: 'produit')]
     private Collection $rubriques;
 
-    //public function __construct()
-    //{
-    //    $this->rubriques = new ArrayCollection();
-    //}
-
-    public function __construct($n, $d, $p, $i, $q)
+    public function __construct()
     {
-
-        $this->nom = $n;
-        $this->description = $d;
-        $this->prix = $p;
-        $this->photo = $i;
-        $this->quantite_totale = $q;
-
         $this->rubriques = new ArrayCollection();
     }
 
