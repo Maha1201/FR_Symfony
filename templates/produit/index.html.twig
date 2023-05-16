@@ -18,7 +18,7 @@
 			{% for produit in produits %}
 				<div class="max-w-sm bg-rose-50 mb-4 border border-gray-200 rounded-lg shadow">
 					<a href="{{ path('app_produit_show', { 'id':produit.id }) }}">
-						<img class="rounded-t-lg p-4" src="{{ produit.photo }}" alt="Roses 20 tiges"/>
+						<img class="rounded-t-lg p-4" src="{{ produit.photo }}" alt="{{ produit.nom }}"/>
 					</a>
 					<div class="p-5">
 						<a href="Produit.html">
