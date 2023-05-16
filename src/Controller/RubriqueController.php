@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Rubrique;
+use App\Repository\ProduitRepository;
 use App\Repository\RubriqueRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,11 +21,11 @@ class RubriqueController extends AbstractController
         ]);
     }
 
-    //#[Route('/rubrique/{id}', name: 'app_rubrique_show', methods: ['GET'])]
-    //public function show(Rubrique $rubrique): Response
-    //{
-    //    return $this->render('rubrique/rubrique_show.html.twig', [
-    //        "rubriques" => $rubrique
-    //    ]);
-    //}
+    #[Route('/rubrique/{rubrique}', name: 'app_rubrique_show', methods: ['GET'])]
+    public function show(Rubrique $rubrique): Response
+    {
+        return $this->render('rubrique/rubrique_show.html.twig', [
+            "rubrique" => $rubrique
+        ]);
+    }
 }

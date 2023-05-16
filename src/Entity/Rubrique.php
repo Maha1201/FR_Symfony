@@ -19,13 +19,13 @@ class Rubrique
     private ?string $nom = null;
 
     #[ORM\ManyToMany(targetEntity: Produit::class, mappedBy: 'rubriques')]
-    private Collection $produit;
+    private Collection $produits;
 
     public function __construct($n)
     {
 
         $this->nom = $n;
-        $this->produit = new ArrayCollection();
+        $this->produits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -48,15 +48,15 @@ class Rubrique
     /**
      * @return Collection<int, Produit>
      */
-    public function getProduit(): Collection
+    public function getProduits(): Collection
     {
-        return $this->produit;
+        return $this->produits;
     }
 
     public function addProduit(Produit $produit): self
     {
-        if (!$this->produit->contains($produit)) {
-            $this->produit->add($produit);
+        if (!$this->produits->contains($produit)) {
+            $this->produits->add($produit);
         }
 
         return $this;
@@ -64,7 +64,7 @@ class Rubrique
 
     public function removeProduit(Produit $produit): self
     {
-        $this->produit->removeElement($produit);
+        $this->produits->removeElement($produit);
 
         return $this;
     }
