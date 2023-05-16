@@ -7,28 +7,34 @@
 {% block body %}
 	<!-- Cards de produits en vente -->
 
-	{# <section>
-		<div class="flex flex-wrap justify-evenly mx-20 mt-20 text-rose-400">
-			{% for produit in produits %}
-				<div class="max-w-sm bg-rose-50 mb-4 border border-gray-200 rounded-lg shadow">
-					<a href="{{ path('app_produit_show', { 'id':produit.id }) }}">
-						<img class="rounded-t-lg p-4" src="{{ produit.photo }}" alt="{{ produit.nom }}"/>
-					</a>
-					<div class="p-5">
-						<a href="Produit.html">
-							<h5 class="flex justify-center mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ produit.nom }}
-							</h5>
-						</a>
-						<hr class="my-6 border-rose-600 sm:mx-auto lg:my-4">
-						<p class="flex justify-center mb-3 font-normal text-gray-700">{{ produit.prix }}</p>
-					</div>
-				</div>
-			{% endfor %}
+	{# {% for produit in produits %}
 
-		</div>
-		<div class="flex justify-center mb-10">
-			<a href="{{ path('app_produit_new') }}" class="text-xl bg-rose-700 shadow rounded-lg p-2 ml-4 mt-10 text-white hover:bg-rose-800 focus:ring-2 focus:ring-rose-900">Créer un nouvel objet</a>
-		</div>
-	</section> #}
-    
+		{{ produit.nom }}
+
+	{% endfor %} #}
+
+	<section>
+			<div class="flex flex-wrap justify-evenly mx-20 mt-20 text-rose-400">
+				{% for produit in produits %}
+					<div class="max-w-sm bg-rose-50 mb-4 border border-gray-200 rounded-lg shadow">
+						<a href="{{ path('app_produit_show', { 'id':produit.id }) }}">
+							<img class="rounded-t-lg p-4" src="{{ produit.photo }}" alt="{{ produit.nom }}"/>
+						</a>
+						<div class="p-5">
+							<a href="Produit.html">
+								<h5 class="flex justify-center mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ produit.nom }}
+								</h5>
+							</a>
+							<hr class="my-6 border-rose-600 sm:mx-auto lg:my-4">
+							<p class="flex justify-center mb-3 font-normal text-gray-700">{{ produit.prix }}</p>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			
+			<div class="flex justify-center mb-10">
+				<a href="{{ path('app_produit_new') }}" class="text-xl bg-rose-700 shadow rounded-lg p-2 ml-4 mt-10 text-white hover:bg-rose-800 focus:ring-2 focus:ring-rose-900">Créer un nouvel objet</a>
+			</div>
+		</section>
+
 {% endblock %}

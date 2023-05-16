@@ -15,7 +15,7 @@
 	<section class="flex flex-wrap justify-evenly m-20 text-rose-400">
 		{% for rubrique in rubriques %}
 			<div>
-				<a href="{{ path('app_rubrique_show', {'id': rubrique.id}) }}">
+				<a href="{{ path('app_rubrique_show_prod', {'id': rubrique.id}) }}">
 					<div class="max-w-sm bg-rose-50 border border-rose-200 rounded-lg shadow p-44 m-16">
 						<div class="text-3xl flex justify-center">{{ rubrique.nom }}</div>
 					</div>

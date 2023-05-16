@@ -21,13 +21,17 @@ class ProduitController extends AbstractController
         ]);
     }
 
-    //#[Route('/rubrique/{id}', name: 'app_rubrique_show_prod', methods: ['GET'])]
-    //public function rubriqueShowController(ProduitRepository $produitRepository): Response
-    //{
-    //    return $this->render('rubrique/rubrique_show.html.twig', [
-    //        'produits' => $produitRepository->findAll(),
-    //    ]);
-    //}
+
+    // ?????????
+    #[Route('/rubrique/{id}', name: 'app_rubrique_show_prod', methods: ['GET'])]
+    public function rubriqueShowController(ProduitRepository $produitRepository, int $id): Response
+    {
+        return $this->render('rubrique/rubrique_show.html.twig', [
+            'produits' => $produitRepository->find($id),
+        ]);
+    }
+
+
 
     #[Route('/new', name: 'app_produit_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ProduitRepository $produitRepository): Response

@@ -20,12 +20,11 @@ class RubriqueController extends AbstractController
         ]);
     }
 
-    #[Route('/rubrique/{id}', name: 'app_rubrique_show', methods: ['GET'])]
-    public function show(Rubrique $rubrique): Response
-    {
-
-        return $this->render('rubrique/rubrique_show.html.twig', [
-            "rubriques" => $rubrique
-        ]);
-    }
+    //#[Route('/rubrique/{id}', name: 'app_rubrique_show', methods: ['GET'])]
+    //public function show(Rubrique $rubrique): Response
+    //{
+    //    return $this->render('rubrique/rubrique_show.html.twig', [
+    //        "rubriques" => $rubrique
+    //    ]);
+    //}
 }
