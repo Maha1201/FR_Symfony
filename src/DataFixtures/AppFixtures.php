@@ -13,19 +13,19 @@ class AppFixtures extends Fixture
     {
         $rub = new Rubrique("Mariage");
         $manager->persist($rub);
-        $this->addReference( "Mariage", $rub);
+        $this->addReference("Mariage", $rub);
 
         $rub2 = new Rubrique("Deuil");
         $manager->persist($rub2);
-        $this->addReference( "Deuil", $rub2);
+        $this->addReference("Deuil", $rub2);
 
         $rub3 = new Rubrique("Anniversaire");
         $manager->persist($rub3);
-        $this->addReference( "Anniversaire", $rub3);
+        $this->addReference("Anniversaire", $rub3);
 
         $rub4 = new Rubrique("Amour");
         $manager->persist($rub4);
-        $this->addReference( "Amour", $rub4);
+        $this->addReference("Amour", $rub4);
 
         $p1 = new Produit;
         $p1->setNom("fleur1")
@@ -45,7 +45,7 @@ class AppFixtures extends Fixture
             ->setQuantiteTotale(30);
         $p2->addRubrique($this->getReference("Deuil"));
         $manager->persist($p2);
-        
+
 
         $p3 = new Produit;
         $p3->setNom("fleur3")
@@ -55,7 +55,19 @@ class AppFixtures extends Fixture
             ->setQuantiteTotale(30);
         $p3->addRubrique($this->getReference("Amour"));
         $manager->persist($p3);
-        
+
+        $p4 = new Produit;
+        $p4->setNom("fleur6432")
+            ->setDescription("Descriptoin")
+            ->setPrix(12)
+            ->setPhoto("https://fleurs2saison.fr/wp-content/uploads/2020/04/ca8eb396ce7a6a3fd46b1646673a14d3.jpg")
+            ->setQuantiteTotale(30);
+        $p4->addRubrique($rub);
+        $p4->addRubrique($rub2);
+        $p4->addRubrique($rub3);
+        $p4->addRubrique($rub4);
+        $manager->persist($p4);
+
         //$p1->addRubrique($rub);
         //$p2->addRubrique($rub2);
         //$p3->addRubrique($rub3);
