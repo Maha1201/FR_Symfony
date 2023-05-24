@@ -45,7 +45,9 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
 
             // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+            $this->emailVerifier->sendEmailConfirmation(
+                'app_verify_email',
+                $user,
                 (new TemplatedEmail())
                     ->from(new Address('abdalla.m1201@gmail.com', 'MailTest'))
                     ->to($user->getEmail())
@@ -75,6 +77,12 @@ class RegistrationController extends AbstractController
 
             return $this->redirectToRoute('app_register');
         }
+
+        // Pour set en bdd le role User, voir Damien + remettre EntityManagerInterfance $entityManager
+        //$user = $this->getUser();
+        //$user->setRoles(["ROLE_USER"]);
+        //$entityManager->persist($user);
+        //$entityManager->flush();
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Your email address has been verified.');

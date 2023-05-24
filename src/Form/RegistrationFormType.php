@@ -19,6 +19,10 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
+                'label' => "Email :",
+                'label_attr' => [
+                    'class' => 'flex text-rose-700'
+                ],
                 'attr' => [
                     'class' => 'form-control rounded border-rose-300 border-2 mb-2'
                 ]
@@ -26,7 +30,10 @@ class RegistrationFormType extends AbstractType
 
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
-                'label' => "J'accepte",
+                'label' => "J'accepte les conditions",
+                'label_attr' => [
+                    'class' => 'text-rose-700'
+                ],
                 'attr' => [
                     'class' => 'form-control rounded border-rose-300 border-2'
                 ],
@@ -40,6 +47,10 @@ class RegistrationFormType extends AbstractType
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
+                'label' => 'Mot de passe :',
+                'label_attr' => [
+                    'class' => 'flex text-rose-700'
+                ],
                 'attr' => [
                     'autocomplete' => 'new-password',
                     'class' => 'form-control rounded border-rose-300 border-2 mb-2'

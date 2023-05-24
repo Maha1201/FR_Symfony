@@ -7,8 +7,8 @@
 
 	<section>
 		{# <div class="text-3xl ml-36 bg-rose-200">
-					<h1>Produit</h1>
-				</div> #}
+							<h1>Produit</h1>
+						</div> #}
 		<!-- Contenu -->
 			<div class="grid grid-cols-2 mt-20"> <!-- Permet de couper la page en 2 colonnes -->
 			<!-- Image -->
@@ -33,11 +33,14 @@
 		</div>
 	</section>
 
-	<div class="flex flex-row justify-center mb-10">
-		<a href="{{ path('app_produit') }}" class="text-xl bg-rose-700 shadow rounded-lg p-2 ml-4 text-white hover:bg-rose-800 focus:ring-2 focus:ring-rose-900">Retour</a>
 
-		<a href="{{ path('app_produit_edit', {'id': produit.id}) }}" class="text-xl bg-rose-700 shadow rounded-lg p-2 ml-4 text-white hover:bg-rose-800 focus:ring-2 focus:ring-rose-900">Modifier</a>
+	{% if is_granted('ROLE_ADMIN') %}
+		<div class="flex flex-row justify-center mb-10">
+			<a href="{{ path('app_produit') }}" class="text-xl bg-rose-700 shadow rounded-lg p-2 ml-4 text-white hover:bg-rose-800 focus:ring-2 focus:ring-rose-900">Retour</a>
 
-		{{ include('produit/_delete_form.html.twig') }}
-	</div>
+			<a href="{{ path('app_produit_edit', {'id': produit.id}) }}" class="text-xl bg-rose-700 shadow rounded-lg p-2 ml-4 text-white hover:bg-rose-800 focus:ring-2 focus:ring-rose-900">Modifier</a>
+
+			{{ include('produit/_delete_form.html.twig') }}
+		</div>
+	{% endif %}
 {% endblock %}
