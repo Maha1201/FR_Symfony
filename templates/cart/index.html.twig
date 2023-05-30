@@ -7,49 +7,56 @@
 	<section class="mx-60">
 		<h1 class="flex justify-center my-20 text-3xl text-pink-600">Votre panier ๑(◕‿◕)๑
 		</h1>
-	
 
-	<table class="w-full rounded-lg text-base text-left text-pink-700 bg-rose-100 my-28 shadow-lg">
-		<thead class="text-pink-800 uppercase border-b">
-			<tr>
-				<th class="px-6 py-3">Produit</th>
-				<th class="px-6 py-3">Prix</th>
-				<th class="px-6 py-3">Quantité</th>
-				<th class="px-6 py-3">Total</th>
-				<th class="px-6 py-3">Modifier</th>
-			</tr>
-		</thead>
-		<tbody>
-    {% for element in dataPanier %}
-        <tr class="bg-white">
-            <td class="px-6 py-4 font-medium text-pink-700 whitespace-nowrap">{{ element.produit.nom }}</td>
-            <td class="px-6 py-4">{{ element.produit.prix }} €</td>
-            <td class="px-6 py-4">{{ element.quantite }}</td>
-            <td class="px-6 py-4">{{ element.quantite * element.produit.prix }} €</td>
-            <td class="px-6 py-4">
-                <a href="{{ path("add", {id : element.produit.id}) }}" class="bg-pink-100 p-2 rounded-lg mr-6 hover:bg-white focus:border-rose-300 focus:border-2">+1 ଘ(✿˵•́ ᴗ •̀˵)</a>
-                <a href="{{ path("remove", {id : element.produit.id}) }}" class="bg-pink-200 p-2 rounded-lg mr-6 hover:bg-pink-50 focus:border-rose-300 focus:border-2">-1 (ง •̀_•́)ง</a>
-                <a href="{{ path("delete", {id : element.produit.id}) }}" class="bg-pink-300 p-2 rounded-lg hover:bg-pink-200 focus:border-rose-400 focus:border-2">Supprimer (┳◇┳)</a>
-            </td>
-        </tr>
-    {% else %}
-        <tr>
-            <td colspan="5" class="text-center">Votre panier est vide</td>
-        </tr>
-    {% endfor %}
-        </tbody>
-        <tfoot class="text-pink-800 uppercase font-bold border-t">
-            <tr>
-                <td class="px-6 py-3">Total</td>
-                <td class="px-6 py-3"></td>
-                <td class="px-6 py-3"></td>
-                <td class="px-6 py-3">{{ total }} €</td>
-                <td class="px-6 py-3">
-                    <a href="{{ path("delete_all") }}" class="bg-pink-300 p-2 rounded-lg hover:bg-pink-200 focus:border-pink-500 focus:border-2">Vider le panier (✖﹏✖)</a>
-                </td>
-            </tr>
-        </tfoot>
-	</table>
 
-    </section>
+		<table class="w-full rounded-lg text-base text-left text-pink-700 bg-rose-100 my-28 shadow-lg">
+			<thead class="text-pink-800 uppercase border-b border-white">
+				<tr>
+					<th class="px-6 py-3">Produit</th>
+					<th class="px-6 py-3">Prix</th>
+					<th class="px-6 py-3">Quantité</th>
+					<th class="px-6 py-3">Total</th>
+					<th class="px-6 py-3">Modifier</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for element in dataPanier %}
+					<tr class="bg-white">
+						<td class="px-6 py-4 font-medium text-pink-700 whitespace-nowrap">{{ element.produit.nom }}</td>
+						<td class="px-6 py-4">{{ element.produit.prix }}
+							€</td>
+						<td class="px-6 py-4">{{ element.quantite }}</td>
+						<td class="px-6 py-4">{{ element.quantite * element.produit.prix }}
+							€</td>
+						<td class="px-6 py-4">
+							<a href="{{ path("add", {id : element.produit.id}) }}" class="bg-pink-100 p-2 rounded-lg mr-6 hover:bg-white focus:border-rose-300 focus:border-2">+1 ଘ(✿˵•́ ᴗ •̀˵)</a>
+							<a href="{{ path("remove", {id : element.produit.id}) }}" class="bg-pink-200 p-2 rounded-lg mr-6 hover:bg-pink-50 focus:border-rose-300 focus:border-2">-1 (ง •̀_•́)ง</a>
+							<a href="{{ path("delete", {id : element.produit.id}) }}" class="bg-pink-300 p-2 rounded-lg hover:bg-pink-200 focus:border-rose-400 focus:border-2">Supprimer (┳◇┳)</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="5" class="text-center text-xl p-4">Votre panier est vide</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+			<tfoot class="text-pink-800 uppercase font-bold border-t border-white">
+				<tr>
+					<td class="px-6 py-3">Total</td>
+					<td class="px-6 py-3"></td>
+					<td class="px-6 py-3"></td>
+					<td class="px-6 py-3">{{ total }}
+						€</td>
+					<td class="px-6 py-3">
+						<a href="{{ path("delete_all") }}" class="bg-pink-300 p-2 rounded-lg hover:bg-pink-200 focus:border-pink-500 focus:border-2">Vider le panier ٭(•﹏•)٭</a>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+
+		<div class="flex justify-end text-xl text-pink-900 pb-8">
+			<a href="#" class="bg-pink-300 p-2 rounded-lg hover:bg-pink-200 focus:border-pink-500 focus:border-2">Passer la commande</a>
+		</div>
+
+	</section>
 {% endblock %}
