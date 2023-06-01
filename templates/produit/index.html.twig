@@ -14,23 +14,22 @@
 
 	<!-- Cards de produits en vente -->
 	<section>
-		<div class="flex flex-wrap justify-evenly mx-20 my-20 text-rose-400">
+		<div class="flex flex-wrap justify-evenly mx-20 my-40 text-rose-400">
 			{% for produit in produits %}
 				<div class="max-w-sm bg-rose-50 mb-4 border border-gray-200 rounded-lg shadow">
 					<a href="{{ path('app_produit_show', { 'id':produit.id }) }}">
 						<img class="rounded-t-lg p-4" src="{{ produit.photo }}" alt="{{ produit.nom }}"/>
 					</a>
 					<div class="p-5">
-						<a href="Produit.html">
-							<h5 class="flex justify-center mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ produit.nom }}
+						<a href="{{ path('app_produit_show', { 'id':produit.id }) }}">
+							<h5 class="flex justify-center mb-2 text-2xl font-bold tracking-tight text-rose-700">{{ produit.nom }}
 							</h5>
 						</a>
-						<hr class="my-6 border-rose-600 sm:mx-auto lg:my-4">
-						<p class="flex justify-center mb-3 font-normal text-gray-700">{{ produit.prix }}</p>
+						<hr class="my-6 border-rose-300 sm:mx-auto lg:my-4">
+						<p class="flex justify-center mb-3 font-normal text-rose-600">{{ produit.prix }} €</p>
 					</div>
 				</div>
 			{% endfor %}
-
 		</div>
 
 

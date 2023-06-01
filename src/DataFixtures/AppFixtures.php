@@ -68,6 +68,18 @@ class AppFixtures extends Fixture
         $p4->addRubrique($rub4);
         $manager->persist($p4);
 
+        $p5 = new Produit;
+        $p5->setNom("fleur 653")
+            ->setDescription("Description")
+            ->setPrix(12)
+            ->setPhoto("https://www.francefleurs.com/14860-large_default/bouquet-niagara.jpg")
+            ->setQuantiteTotale(30);
+        $p5->addRubrique($rub);
+        $p5->addRubrique($rub2);
+        $p5->addRubrique($rub3);
+        $p5->addRubrique($rub4);
+        $manager->persist($p5);
+
         //$p1->addRubrique($rub);
         //$p2->addRubrique($rub2);
         //$p3->addRubrique($rub3);
