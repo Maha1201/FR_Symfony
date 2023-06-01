@@ -2,8 +2,10 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Client;
 use App\Entity\Produit;
 use App\Entity\Rubrique;
+use App\Entity\User;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -39,7 +41,7 @@ class AppFixtures extends Fixture
 
         $p2 = new Produit;
         $p2->setNom("fleur2")
-            ->setDescription("Descriptoin")
+            ->setDescription("Description")
             ->setPrix(12)
             ->setPhoto("https://orchisartisanfleuriste.store/wp-content/uploads/2020/05/bouquet_roses_rouges_haut_4654.jpg")
             ->setQuantiteTotale(30);
@@ -79,6 +81,31 @@ class AppFixtures extends Fixture
         $p5->addRubrique($rub3);
         $p5->addRubrique($rub4);
         $manager->persist($p5);
+
+
+
+
+
+
+        //$u1 = new User;
+        //$u1->setEmail("abdalla.m1201@gmail.com")
+        //    ->setRoles(["ROLE_ADMIN"])
+        //    ->setPassword("120198")
+        //    ->setIsVerified("1");
+
+        //$c1 = new Client;
+        //$c1->setReference("000001")
+        //    ->setCategorie("Particulier")
+        //    ->setNom("Ma")
+        //    ->setPrenom("Ha")
+        //    ->setTelephone("0612345678");
+        //$c1->setUser($u1);
+        //$manager->persist($c1);
+
+
+
+
+
 
         //$p1->addRubrique($rub);
         //$p2->addRubrique($rub2);
