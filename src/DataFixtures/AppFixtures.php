@@ -2,6 +2,8 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\AdresseLivraison;
+use App\Entity\AdressePaiement;
 use App\Entity\Client;
 use App\Entity\Produit;
 use App\Entity\Rubrique;
@@ -82,28 +84,40 @@ class AppFixtures extends Fixture
         $p5->addRubrique($rub4);
         $manager->persist($p5);
 
+        $u1 = new User;
+        $u1->setEmail("abdalla.m1201@gmail.com")
+            ->setRoles(["ROLE_ADMIN"])
+            ->setPassword('$2y$13$YUzgMMq7/3TAvipIX5UfI.T2QL7PnlxRapnzQlslk/KBkVDFMz2Ma')
+            ->setIsVerified("1");
 
+        $c1 = new Client;
+        $c1->setReference("000001")
+            ->setCategorie("Particulier")
+            ->setNom("Ma")
+            ->setPrenom("Ha")
+            ->setTelephone("0612345678");
+        $c1->setUser($u1);
+        $manager->persist($c1);
 
+        $al1 = new AdresseLivraison;
+        $al1->setRue("236")
+            ->setIntitule("Pierre Curie")
+            ->setVille("Reims")
+            ->setPays("France")
+            ->setCp("51454")
+            ->setComplement("Apt 45");
+        $al1->setClient($c1);
+        $manager->persist($al1);
 
-
-
-        //$u1 = new User;
-        //$u1->setEmail("abdalla.m1201@gmail.com")
-        //    ->setRoles(["ROLE_ADMIN"])
-        //    ->setPassword("120198")
-        //    ->setIsVerified("1");
-
-        //$c1 = new Client;
-        //$c1->setReference("000001")
-        //    ->setCategorie("Particulier")
-        //    ->setNom("Ma")
-        //    ->setPrenom("Ha")
-        //    ->setTelephone("0612345678");
-        //$c1->setUser($u1);
-        //$manager->persist($c1);
-
-
-
+        $ap1 = new AdressePaiement;
+        $ap1->setRue("236")
+            ->setIntitule("Pierre Curie")
+            ->setVille("Reims")
+            ->setPays("France")
+            ->setCp("51454")
+            ->setComplement("Apt 45");
+        $ap1->setClient($c1);
+        $manager->persist($ap1);
 
 
 

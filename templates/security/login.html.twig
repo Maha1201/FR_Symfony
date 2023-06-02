@@ -5,13 +5,10 @@
 
 {% block body %}
 	<form method="post">
-		{% if error %}
-			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-		{% endif %}
 
 		{% if app.user %}
 			<div class="mb-3 text-xl flex justify-center py-4 bg-red-300">
-				Vous êtes déjà connecté(e) en tant que : 
+				Vous êtes déjà connecté(e) en tant que :
 				{{ app.user.userIdentifier }}
 				<a href="{{ path('app_logout') }}" class="bg-white rounded-lg ml-2 p-1">Déconnexion</a>
 			</div>
@@ -31,16 +28,21 @@
 					type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 				{#
-																		        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-																		        See https://symfony.com/doc/current/security/remember_me.html
-																		
-																		        <div class="checkbox mb-3">
-																		            <label>
-																		                <input type="checkbox" name="_remember_me"> Remember me
-																		            </label>
-																		        </div>
-																		    #}
+							    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+							    See https://symfony.com/doc/current/security/remember_me.html
+																						
+							    <div class="checkbox mb-3">
+							        <label>
+							            <input type="checkbox" name="_remember_me"> Remember me
+							        </label>
+							    </div>
+								#}
 				</div>
+				{# Erreur du mdp/email #}
+				{% if error %}
+					<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security')}}</div>
+				{% endif %}
+
 				<button class="inline-flex items-center px-3 py-2 text-md font-medium text-center text-white bg-rose-700 rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-blue-300" type="submit">
 					Se connecter
 				</button>
