@@ -40,10 +40,14 @@ class Client
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: AdressePaiement::class)]
     private Collection $adressePaiements;
 
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Commande::class)]
+    private Collection $commande;
+
     public function __construct()
     {
         $this->adresseLivraisons = new ArrayCollection();
         $this->adressePaiements = new ArrayCollection();
+        $this->commande = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -177,6 +181,36 @@ class Client
             // set the owning side to null (unless already changed)
             if ($adressePaiement->getClient() === $this) {
                 $adressePaiement->setClient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commande>
+     */
+    public function getCommande(): Collection
+    {
+        return $this->commande;
+    }
+
+    public function addCommande(Commande $commande): self
+    {
+        if (!$this->commande->contains($commande)) {
+            $this->commande->add($commande);
+            $commande->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commande $commande): self
+    {
+        if ($this->commande->removeElement($commande)) {
+            // set the owning side to null (unless already changed)
+            if ($commande->getClient() === $this) {
+                $commande->setClient(null);
             }
         }
 
