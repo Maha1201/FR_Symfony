@@ -2,12 +2,14 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\AdresseLivraison;
-use App\Entity\AdressePaiement;
+use App\Entity\User;
 use App\Entity\Client;
 use App\Entity\Produit;
+use App\Entity\Commande;
 use App\Entity\Rubrique;
-use App\Entity\User;
+use App\Entity\AdressePaiement;
+use App\Entity\AdresseLivraison;
+use DateTimeImmutable;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -119,7 +121,11 @@ class AppFixtures extends Fixture
         $ap1->setClient($c1);
         $manager->persist($ap1);
 
-
+        $com1 = new Commande;
+        $com1->setMoyenPaiement("Carte bancaire")
+                ->setDate(new DateTimeImmutable());
+        $com1->setClient($c1);
+        $manager->persist($com1);
 
         //$p1->addRubrique($rub);
         //$p2->addRubrique($rub2);
