@@ -7,8 +7,7 @@ use App\Entity\Client;
 use App\Entity\Produit;
 use App\Entity\Commande;
 use App\Entity\Rubrique;
-use App\Entity\AdressePaiement;
-use App\Entity\AdresseLivraison;
+use App\Entity\Adresse;
 use DateTimeImmutable;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -101,7 +100,7 @@ class AppFixtures extends Fixture
         $c1->setUser($u1);
         $manager->persist($c1);
 
-        $al1 = new AdresseLivraison;
+        $al1 = new Adresse;
         $al1->setRue("236")
             ->setIntitule("Pierre Curie")
             ->setVille("Reims")
@@ -110,16 +109,6 @@ class AppFixtures extends Fixture
             ->setComplement("Apt 45");
         $al1->setClient($c1);
         $manager->persist($al1);
-
-        $ap1 = new AdressePaiement;
-        $ap1->setRue("236")
-            ->setIntitule("Pierre Curie")
-            ->setVille("Reims")
-            ->setPays("France")
-            ->setCp("51454")
-            ->setComplement("Apt 45");
-        $ap1->setClient($c1);
-        $manager->persist($ap1);
 
         $com1 = new Commande;
         $com1->setMoyenPaiement("Carte bancaire")

@@ -34,19 +34,15 @@ class Client
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    #[ORM\OneToMany(mappedBy: 'client', targetEntity: AdresseLivraison::class)]
-    private Collection $adresseLivraisons;
-
-    #[ORM\OneToMany(mappedBy: 'client', targetEntity: AdressePaiement::class)]
-    private Collection $adressePaiements;
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Adresse::class)]
+    private Collection $adresses;
 
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: Commande::class)]
     private Collection $commande;
 
     public function __construct()
     {
-        $this->adresseLivraisons = new ArrayCollection();
-        $this->adressePaiements = new ArrayCollection();
+        $this->adresses = new ArrayCollection();
         $this->commande = new ArrayCollection();
     }
 
@@ -128,59 +124,29 @@ class Client
     }
 
     /**
-     * @return Collection<int, AdresseLivraison>
+     * @return Collection<int, Adresse>
      */
-    public function getAdresseLivraisons(): Collection
+    public function getAdresses(): Collection
     {
-        return $this->adresseLivraisons;
+        return $this->adresses;
     }
 
-    public function addAdresseLivraison(AdresseLivraison $adresseLivraison): self
+    public function addAdresse(Adresse $adresse): self
     {
-        if (!$this->adresseLivraisons->contains($adresseLivraison)) {
-            $this->adresseLivraisons->add($adresseLivraison);
-            $adresseLivraison->setClient($this);
+        if (!$this->adresses->contains($adresse)) {
+            $this->adresses->add($adresse);
+            $adresse->setClient($this);
         }
 
         return $this;
     }
 
-    public function removeAdresseLivraison(AdresseLivraison $adresseLivraison): self
+    public function removeAdresse(Adresse $adresse): self
     {
-        if ($this->adresseLivraisons->removeElement($adresseLivraison)) {
+        if ($this->adresses->removeElement($adresse)) {
             // set the owning side to null (unless already changed)
-            if ($adresseLivraison->getClient() === $this) {
-                $adresseLivraison->setClient(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, AdressePaiement>
-     */
-    public function getAdressePaiements(): Collection
-    {
-        return $this->adressePaiements;
-    }
-
-    public function addAdressePaiement(AdressePaiement $adressePaiement): self
-    {
-        if (!$this->adressePaiements->contains($adressePaiement)) {
-            $this->adressePaiements->add($adressePaiement);
-            $adressePaiement->setClient($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAdressePaiement(AdressePaiement $adressePaiement): self
-    {
-        if ($this->adressePaiements->removeElement($adressePaiement)) {
-            // set the owning side to null (unless already changed)
-            if ($adressePaiement->getClient() === $this) {
-                $adressePaiement->setClient(null);
+            if ($adresse->getClient() === $this) {
+                $adresse->setClient(null);
             }
         }
 

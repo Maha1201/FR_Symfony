@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\AdressePaiementRepository;
+use App\Repository\AdresseRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: AdressePaiementRepository::class)]
-class AdressePaiement
+#[ORM\Entity(repositoryClass: AdresseRepository::class)]
+class Adresse
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -31,7 +31,7 @@ class AdressePaiement
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $complement = null;
 
-    #[ORM\ManyToOne(inversedBy: 'adressePaiements')]
+    #[ORM\ManyToOne(inversedBy: 'adresse')]
     private ?Client $client = null;
 
     public function getId(): ?int
