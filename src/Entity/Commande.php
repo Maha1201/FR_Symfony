@@ -28,6 +28,12 @@ class Commande
     #[ORM\OneToMany(mappedBy: 'commande', targetEntity: Panier::class)]
     private Collection $paniers;
 
+    #[ORM\ManyToOne(inversedBy: 'commandes')]
+    private ?Adresse $adresseLivraison = null;
+
+    #[ORM\ManyToOne(inversedBy: 'commandes')]
+    private ?Adresse $adresseFacturation = null;
+
     public function __construct()
     {
         $this->paniers = new ArrayCollection();
@@ -100,6 +106,30 @@ class Commande
                 $panier->setCommande(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAdresseLivraison(): ?Adresse
+    {
+        return $this->adresseLivraison;
+    }
+
+    public function setAdresseLivraison(?Adresse $adresseLivraison): self
+    {
+        $this->adresseLivraison = $adresseLivraison;
+
+        return $this;
+    }
+
+    public function getAdresseFacturation(): ?Adresse
+    {
+        return $this->adresseFacturation;
+    }
+
+    public function setAdresseFacturation(?Adresse $adresseFacturation): self
+    {
+        $this->adresseFacturation = $adresseFacturation;
 
         return $this;
     }

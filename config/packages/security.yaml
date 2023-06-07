@@ -40,7 +40,7 @@ security:
     access_control:
         - { path: /new, roles: ROLE_ADMIN }
         - { path: /edit, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/commande/adresses, roles: ROLE_USER }
 
 when@test:
     security:

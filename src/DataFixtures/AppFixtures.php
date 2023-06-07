@@ -90,6 +90,13 @@ class AppFixtures extends Fixture
             ->setRoles(["ROLE_ADMIN"])
             ->setPassword('$2y$13$YUzgMMq7/3TAvipIX5UfI.T2QL7PnlxRapnzQlslk/KBkVDFMz2Ma')
             ->setIsVerified("1");
+        $manager->persist($u1);
+
+        $u2 = new User;
+        $u2->setEmail("devtest.maha@gmail.com")
+            ->setPassword('$2y$13$scby.gCWBV5Ck3g0IPLhfuWRZfQU2fN8zEiIlk6eGDL/sTjecct8G')
+            ->setIsVerified("1");
+        $manager->persist($u2);
 
         $c1 = new Client;
         $c1->setReference("000001")
@@ -99,6 +106,15 @@ class AppFixtures extends Fixture
             ->setTelephone("0612345678");
         $c1->setUser($u1);
         $manager->persist($c1);
+
+        $c2 = new Client;
+        $c2->setReference("000002")
+            ->setCategorie("Professionnel")
+            ->setNom("Ma")
+            ->setPrenom("Hou")
+            ->setTelephone("0612345678");
+        $c2->setUser($u2);
+        $manager->persist($c2);
 
         $al1 = new Adresse;
         $al1->setRue("236")
@@ -110,9 +126,38 @@ class AppFixtures extends Fixture
         $al1->setClient($c1);
         $manager->persist($al1);
 
+        $al2 = new Adresse;
+        $al2->setRue("23")
+            ->setIntitule("Pierre Curie 02")
+            ->setVille("Reims")
+            ->setPays("France")
+            ->setCp("51454")
+            ->setComplement("Apt 4");
+        $al2->setClient($c1);
+        $manager->persist($al2);
+
+        $al3 = new Adresse;
+        $al3->setRue("8")
+            ->setIntitule("Jean Moulin")
+            ->setVille("Reims")
+            ->setPays("France")
+            ->setCp("51454")
+            ->setComplement("Apt 16245");
+        $al3->setClient($c2);
+        $manager->persist($al3);
+
+        $al4 = new Adresse;
+        $al4->setRue("564")
+            ->setIntitule("Marie Curie")
+            ->setVille("Amiens")
+            ->setPays("France")
+            ->setCp("84613");
+        $al4->setClient($c2);
+        $manager->persist($al4);
+
         $com1 = new Commande;
         $com1->setMoyenPaiement("Carte bancaire")
-                ->setDate(new DateTimeImmutable());
+            ->setDate(new DateTimeImmutable());
         $com1->setClient($c1);
         $manager->persist($com1);
 
