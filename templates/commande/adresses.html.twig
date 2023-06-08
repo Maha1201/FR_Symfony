@@ -4,18 +4,52 @@
 {% endblock %}
 
 {% block body %}
+
 	<div class="p-10 flex justify-center">
 		<h1 class="text-3xl">Passer la commande</h1>
 	</div>
 
 
-	<section class="ml-40 text-xl">
+	<section class="grid grid-cols-2 text-xl">
 
-		<div class="">
+
+		<div class="flex justify-center">
 
 			{{ form(form) }}
 
 			</div>
 
+			<div class="rounded-lg p-4 lg:mr-80">
+
+				{% for item in panier %}
+					<div class="flex flex-wrap m-4 bg-rose-100 rounded-lg p-4">
+					
+						<div class="w-40"><img src="{{ item.produit.photo }}" alt="" class="rounded-lg"></div>
+
+						<div class="flex flex-col ml-4">
+							<div class="text-3xl my-4">{{ item.produit.nom }}</div>
+							<div>Prix :
+								{{ item.produit.prix }}
+								€</div>
+							<div>Quantite :
+								{{ item.quantite }}</div>
+							<div>Total :
+								{{ item.quantite * item.produit.prix }}
+								€
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+
+				<div class="flex justify-center text-3xl">
+					Montant total :
+					{{ total }}
+					€
+				</div>
+
+			</div>
+
+
 		</section>
+
 	{% endblock %}

@@ -30,7 +30,7 @@ class CommandeAdressesType extends AbstractType
                         ->where('a.client=:client')
                         ->setParameter('client', $this->security->getUser()->getClient());
                 },
-                'choice_label' => 'intitule',
+                //'choice_label' => 'intitule',
                 'choice_value' => 'id',
                 'label' => 'Adresse de livraison',
                 'attr' => ['class' => 'form-control']
@@ -43,7 +43,6 @@ class CommandeAdressesType extends AbstractType
                         ->where('a.client=:client')
                         ->setParameter('client', $this->security->getUser()->getClient());
                 },
-                'choice_label' => 'intitule',
                 'choice_value' => 'id',
                 'label' => 'Adresse de facturation',
                 'attr' => ['class' => 'form-control']

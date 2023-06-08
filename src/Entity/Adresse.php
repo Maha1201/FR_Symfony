@@ -165,6 +165,6 @@ class Adresse
 
     public function __toString()
     {
-        return $this->intitule;
+        return $this->rue . " rue " . $this->intitule . ", " . $this->ville;
     }
 }

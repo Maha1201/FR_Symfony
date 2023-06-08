@@ -53,10 +53,21 @@
 				</tr>
 			</tfoot>
 		</table>
+		
+		{# Renvoie sur le panier s'il n'a ajouté aucun article #}
+		{% if dataPanier is empty %}
 
-		<div class="flex justify-end text-xl text-pink-900 pb-8">
-			<a href="{{ path("app_commande")}}" class="bg-pink-300 p-2 rounded-lg hover:bg-pink-200 focus:border-pink-500 focus:border-2">Passer la commande</a>
-		</div>
+			<div class="flex justify-end text-xl text-pink-900 pb-8">
+				<a href="{{ path("app_cart")}}" class="bg-pink-300 p-2 rounded-lg hover:bg-pink-200 focus:border-pink-500 focus:border-2">Passer la commande</a>
+			</div>
+
+		{% else %}
+
+			<div class="flex justify-end text-xl text-pink-900 pb-8">
+				<a href="{{ path("app_adresses")}}" class="bg-pink-300 p-2 rounded-lg hover:bg-pink-200 focus:border-pink-500 focus:border-2">Passer la commande</a>
+			</div>
+
+		{% endif %}
 
 	</section>
 {% endblock %}
