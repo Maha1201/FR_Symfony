@@ -9,20 +9,22 @@
 	<!-- Cards -->
 
 	{# {{ dump(produits) }} #}
+		<div class="flex justify-center text-3xl text-rose-500 pt-20">Découvrez nos produits</div>
 
 	<section class="flex flex-wrap justify-evenly m-32">
+
 		{% for produit in produits %}
 
-			<div class="max-w-sm bg-rose-50 border border-gray-200 rounded-lg shadow">
+			<div class="max-w-sm bg-rose-50 border border-gray-200 rounded-lg shadow mb-6">
 				<a href="{{ path('app_produit_show', { 'id':produit.id }) }}">
 					<img class="rounded-t-lg" src="{{ produit.photo }}" alt="{{ produit.nom }}"/>
 				</a>
 				<div class="p-5">
 					<a href="{{ path('app_produit_show', { 'id':produit.id }) }}">
-						<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ produit.nom }}
+						<h5 class="mb-2 text-2xl font-bold tracking-tight text-rose-700">{{ produit.nom }}
 						</h5>
 					</a>
-					<p class="mb-3 font-normal text-gray-700">{{ produit.prix }}</p>
+					<p class="mb-3 font-normal text-rose-600">{{ produit.prix }}</p>
 					<a href="{{ path("app_produit") }}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-rose-700 rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
 						Tous les bouquets
 						<i class='bx bx-right-arrow-alt'></i>

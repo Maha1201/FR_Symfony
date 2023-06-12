@@ -32,8 +32,11 @@ class CommandeAdressesType extends AbstractType
                 },
                 //'choice_label' => 'intitule',
                 'choice_value' => 'id',
-                'label' => 'Adresse de livraison',
-                'attr' => ['class' => 'form-control']
+                'label' => 'Adresse de livraison :',
+                'label_attr' => [
+                    'class' => 'flex text-rose-700 pb-4'
+                ],
+                'attr' => ['class' => 'form-control rounded border-rose-300 border-2 mb-2']
             ])
 
             ->add('adresseFacturation', EntityType::class, [
@@ -45,10 +48,15 @@ class CommandeAdressesType extends AbstractType
                 },
                 'choice_value' => 'id',
                 'label' => 'Adresse de facturation',
-                'attr' => ['class' => 'form-control']
+                'label_attr' => [
+                    'class' => 'flex text-rose-700 pb-4'
+                ],
+                'attr' => ['class' => 'form-control rounded border-rose-300 border-2 mb-2']
             ])
 
-            ->add("Valider", SubmitType::class);
+            ->add("Valider", SubmitType::class, [
+                'attr' => ['class' => 'block text-rose-800 inline-block mt-0 hover:text-rose-600 bg-rose-300 hover:bg-rose-200 px-5 py-2 rounded-lg']
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

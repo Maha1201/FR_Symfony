@@ -5,7 +5,7 @@
 
 {% block body %}
 	<section class="mx-60">
-		<h1 class="flex justify-center my-20 text-3xl text-pink-600">Votre panier ๑(◕‿◕)๑
+		<h1 class="flex justify-center my-20 text-3xl text-pink-600">Votre panier
 		</h1>
 
 
@@ -29,9 +29,9 @@
 						<td class="px-6 py-4">{{ element.quantite * element.produit.prix }}
 							€</td>
 						<td class="px-6 py-4">
-							<a href="{{ path("add", {id : element.produit.id}) }}" class="bg-pink-100 p-2 rounded-lg mr-6 hover:bg-white focus:border-rose-300 focus:border-2">+1 ଘ(✿˵•́ ᴗ •̀˵)</a>
-							<a href="{{ path("remove", {id : element.produit.id}) }}" class="bg-pink-200 p-2 rounded-lg mr-6 hover:bg-pink-50 focus:border-rose-300 focus:border-2">-1 (ง •̀_•́)ง</a>
-							<a href="{{ path("delete", {id : element.produit.id}) }}" class="bg-pink-300 p-2 rounded-lg hover:bg-pink-200 focus:border-rose-400 focus:border-2">Supprimer (┳◇┳)</a>
+							<a href="{{ path("add", {id : element.produit.id}) }}" class="bg-pink-100 p-2 px-4 rounded-lg mr-6 hover:bg-white focus:border-rose-300 focus:border-2">+1</a>
+							<a href="{{ path("remove", {id : element.produit.id}) }}" class="bg-pink-200 p-2 px-4 rounded-lg mr-6 hover:bg-pink-50 focus:border-rose-300 focus:border-2">-1</a>
+							<a href="{{ path("delete", {id : element.produit.id}) }}" class="bg-pink-300 p-2 rounded-lg hover:bg-pink-200 focus:border-rose-400 focus:border-2">Supprimer la ligne</a>
 						</td>
 					</tr>
 				{% else %}
@@ -48,7 +48,7 @@
 					<td class="px-6 py-3">{{ total }}
 						€</td>
 					<td class="px-6 py-3">
-						<a href="{{ path("delete_all") }}" class="bg-pink-300 p-2 rounded-lg hover:bg-pink-200 focus:border-pink-500 focus:border-2">Vider le panier ٭(•﹏•)٭</a>
+						<a href="{{ path("delete_all") }}" class="bg-pink-300 p-2 rounded-lg hover:bg-pink-200 focus:border-pink-500 focus:border-2">Vider le panier</a>
 					</td>
 				</tr>
 			</tfoot>
