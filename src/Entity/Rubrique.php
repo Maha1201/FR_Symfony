@@ -7,6 +7,7 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\RubriqueRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: RubriqueRepository::class)]
 #[ApiResource()]
@@ -15,9 +16,11 @@ class Rubrique
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(["read:product"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["read:product"])]
     private ?string $nom = null;
 
     #[ORM\ManyToMany(targetEntity: Produit::class, mappedBy: 'rubriques')]

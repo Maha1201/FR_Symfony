@@ -8,32 +8,42 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\ProduitRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
-#[ApiResource()]
+#[ApiResource(
+    normalizationContext: [ "groups" => ["read:product"]]
+)]
 class Produit
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(["read:product"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["read:product"])]
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["read:product"])]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
+    #[Groups(["read:product"])]
     private ?string $prix = null;
 
     #[ORM\Column]
+    #[Groups(["read:product"])]
     private ?int $quantite_totale = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["read:product"])]
     private ?string $photo = null;
 
     #[ORM\ManyToMany(targetEntity: Rubrique::class, inversedBy: 'produit')]
+    #[Groups(["read:product"])]
     private Collection $rubriques;
 
     public function __construct()
