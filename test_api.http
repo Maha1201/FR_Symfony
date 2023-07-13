@@ -1,0 +1,29 @@
+GET https://maha.amorce.org/api/produits
+Accept: application/json
+
+###
+
+GET https://maha.amorce.org/api/produits/1
+Accept: application/json
+
+
+###
+
+POST https://maha.amorce.org/api/produits
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nom": "test",
+  "description": "test",
+  "prix": "15",
+  "photo": "sans",
+  "rubriques": [
+    "/api/rubriques/1"
+  ],
+  "quantiteTotale": 10
+}
+
+
+
+
